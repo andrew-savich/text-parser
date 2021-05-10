@@ -23,13 +23,14 @@ public class Sentence implements CompositeComponent {
 	}
 	
 	public void replaceFirstLastWordsInSentence() {
-		LeafComponent firstWord = leafComponents.get(0);
-		LeafComponent lastWord = leafComponents.get(leafComponents.size() - 2);
+		int indexOfLastWord = leafComponents.size() - 2;
 		
-		leafComponents.add(0, lastWord);
-		leafComponents.remove(1);
-		leafComponents.add(leafComponents.size() - 2, firstWord);
-		leafComponents.remove(leafComponents.size() - 2);
+		LeafComponent firstWord = leafComponents.get(0);
+		LeafComponent lastWord = leafComponents.get(indexOfLastWord);
+		
+		leafComponents.set(0, lastWord);
+		leafComponents.set(indexOfLastWord, firstWord);
+		
 	}
 	
 	public List<LeafComponent> getLeafComponents() {
